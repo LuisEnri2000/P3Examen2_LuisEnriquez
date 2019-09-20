@@ -29,7 +29,7 @@ int main() {
 		
 		if (opcionMenu == 1) {
 			// Opcion de agregar
-			cout << "INGRESE UNA OPERACION:" << endl;
+			cout << "INGRESE UNA OPERACION" << endl;
 			cin >> operacionBase;
 			
 		//	cout << endl << operacionBase;
@@ -45,7 +45,7 @@ int main() {
 					if (acumuladorCadena.size() == 1) {
 						acumuladorCadena = "0" + acumuladorCadena;
 					}
-						
+					
 					pila.push(acumuladorCadena);
 					
 					pila.push(subCadena);
@@ -76,6 +76,8 @@ int main() {
 					operacion = pila.pop()->getValor();
 					numero2 = pila.pop()->getValor();
 					
+					cout << numero1 << operacion << numero2 << " es: ";
+					
 					ss << numero1;
 					kk << numero2;
 					
@@ -85,20 +87,21 @@ int main() {
 					cout << parseoNumero1 << operacion << parseoNumero2 << "=";
 					
 					if (operacion == "+") {
-						resultado = parseoNumero1 + parseoNumero2;
+						resultado = parseoNumero2 + parseoNumero1;
 					}
 					if (operacion == "*") {
-						resultado = parseoNumero1 * parseoNumero2;
+						resultado = parseoNumero2 * parseoNumero1;
 					}
 					if (operacion == "/") {
-						resultado = parseoNumero1 / parseoNumero1;
+						resultado = parseoNumero2 / parseoNumero1;
 					}
+					
+					cout << resultado<<endl;
 					
 					ofstream Escribir;
 					Escribir.open("./Historial.txt",ios::app); // Sin el ios :: app, lo sobreescribe, si lo hay solo escribe al final
 					
 					if (Escribir.is_open()) {
-						
 						Escribir << parseoNumero1 << operacion << parseoNumero2 << "=" << resultado << endl;
 					}else{
 						cout << "No es pudo abrir el archivo!";
